@@ -1,11 +1,10 @@
-class CreateQuestions < ActiveRecord::Migration[6.1]
+class CreateContents < ActiveRecord::Migration[6.1]
   def change
-    create_table :questions do |t|
+    create_table :contents do |t|
       t.string :title
       t.text :text
       t.number :total_like
       t.string :user_id
-      t.boolean :answered
 
       t.timestamps
     end
