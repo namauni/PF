@@ -3,7 +3,6 @@ class CreateQuestions < ActiveRecord::Migration[6.1]
     create_table :questions do |t|
       t.string :title
       t.text :text
-      t.number :total_like
       t.string :user_id
       t.boolean :answered
 
