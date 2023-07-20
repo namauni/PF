@@ -8,14 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <% contents.each do |content| %>
+    <% @contents.each do |content| %>
       <tr>
-        <td><%= link_to (content.user) do %>
-          <%= image_tag content.user.get_profile_image, size:'50x50' %>
-          <% end %>
         </td>
         <td><%= link_to content.title,content %></td>
-        <td><%= content.body %></td>
+        <td><%= content.text %></td>
       
      <td> <% if content.favorited_by?(current_user) %>
       

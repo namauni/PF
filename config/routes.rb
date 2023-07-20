@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'questions/new'
+  get 'questions/index'
+  get 'questions/show'
+  get 'questions/edit'
 devise_for :users
 root to: 'homes#top'
 get '/home/about' => 'homes#about',as: "about"
@@ -7,6 +11,15 @@ resources :contents, only: [:new, :create, :index, :show, :destroy, :edit, :upda
   resource :favorites, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
 end
-resources :users, only: [:show, :edit,:update]
+
+resources :questions, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+  resources :questions_comments, only: [:create, :destroy]
+end
+resources :users, only: [:show, :edit,:update]do
+  resource :relationships, only:[:create, :destroy]
+
+  get 'follows' => 'relationships#followed'
+  get 'followers' => 'relationships#follower'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

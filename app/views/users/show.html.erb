@@ -5,11 +5,25 @@
     <div class='col-md-3'>
         
 <h2>User info</h2>
-<%= render 'info', user: current_user %>
+
     </div>
 
 <div class='col-md-8 offset-md-1'>
-<h2>Users</h2>
+ <h2>投稿</h2>
+ <div>
+ <p>投稿した話</p>
+ <p>投稿数</p>
+ <div class="row">
+    <%= link_to '一覧',contents_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
+ </div>
+ </div>
+ 
+           <% if @user == current_user %>
+            <td><%= link_to '新規投稿', new_content_path(@user), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to '新規質問', new_question_path(@user), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-sm btn-success" %></td>
+
+          <% end %>
 </div>
   </div>
 </div>

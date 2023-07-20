@@ -10,7 +10,7 @@ class ContentsController < ApplicationController
 
   def show
      @content = Content.find(params[:id]) 
-     @comment = Comment..new
+     @comment = Comment.new
   end
 
   def edit
