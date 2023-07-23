@@ -1,6 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 
-body {
+.main-dark {
     background-color: #202425;
     color: #fff;
 }
@@ -10,8 +10,7 @@ body {
     color: #fff;
 }
 
-a,
-a:hover {
+a, a:hover {
     color: #BAE5FF !important;
 }
 
