@@ -9,7 +9,7 @@ class ContentsController < ApplicationController
   end
   
   def arrivalorder
-    @contents = Content.all(created_at: :desc)
+    @contents = Content.all.order(created_at: :desc)
   end
 
   def show
@@ -49,6 +49,6 @@ class ContentsController < ApplicationController
   private
   # ストロングパラメータ
   def content_params
-    params.require(:content).permit(:title, :text)
+    params.require(:content).permit(:title, :text, :user_comment)
   end
 end

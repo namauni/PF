@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 before_action :is_matching_login_user, only: [:destroy]
 def create
     @comment = current_user.comments.new(comment_params)
+    @comment.content_id = params[:content_id]
     @comment.save
     redirect_to content_path(@comment.content_id)
 end
@@ -12,7 +13,7 @@ def destroy
 end
 
 def index
-    @comments = Content.all(created_at: :desc)
+    @comments = Comment.all.order(created_at: :desc)
 end
   
   private

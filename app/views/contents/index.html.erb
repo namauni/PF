@@ -2,12 +2,12 @@
   <div class='row'>
     <div class='col-md-12'>
       
-     <div class='card' style="d-block mb-5">
-      <div style="display: flex">
-          <%= link_to '一覧',contents_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
-          <%= link_to 'コメント',content_comments_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
-          <%= link_to '新着順',contents_arrivalorder_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
-          <%= link_to '投稿',contents_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
+     <div class='text-center'>
+      <div class="btn-group mb-5" role="group" aria-label="Basic example">
+          <%= link_to '一覧',contents_path, class: "btn #{controller_name == 'contents' && action_name == 'index' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to 'コメント',comments_path, class: "btn #{controller_name == 'comments' && action_name == 'index' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to '新着順',contents_arrivalorder_path, class: "btn #{controller_name == 'contents' && action_name == 'arrivalorder' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to '投稿',new_content_path, class: "btn #{controller_name == 'contents' && action_name == 'new' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
       </div>
      </div>
 <table class='table table-hover table-inverse'>

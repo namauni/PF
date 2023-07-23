@@ -1,55 +1,70 @@
- <div class="container">
-  <div class="row">
-    <div class='col-md-10'>
-     <div>
-      <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
-      <p class="text-white"><%= @content.title %></p>
-      </div>
-
-      <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #202425">
-      <p class="text-white"><%= @content.text %></p>
-      </div>
-
-<% if @content.user == current_user %>
-<%= link_to "編集", edit_content_path(@content.id), class: "btn btn-sm btn-success" %>
-<%= link_to "削除", content_path(@content.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-<% end %>
-     </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h4 class="p-2 text-center" style="background-color: #505d6b"><%= @content.title %></h4>
+            
+            <div class="content">
+                <%= simple_format(@content.text) %>
+            </div>
+            
+            <% if @content.user == current_user %>
+                <%= link_to "編集", edit_content_path(@content.id), class: "btn btn-sm btn-success" %>
+                <%= link_to "削除", content_path(@content.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            <% end %>
+            
+            <div class="row my-3">
+                <div class="col-md-6">
+                    <h5>投稿者: <%= link_to @content.user.name, user_path(@content.user) %></h5>
+                </div>
+                <div class="col-md-6">
+                    Follow
+                </div>
+            </div>
+            
+            <div class="author-comment">
+                <%= simple_format(@content.user_comment) %>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <% if @content.favorited_by?(current_user) %>
+                        <%= link_to content_favorites_path(@content), method: :delete, remote: true do %>
+                            ♥<%= @content.favorites.count %> いいね
+                        <% end %>
+                    <% else %>
+                        <%= link_to content_favorites_path(@content), method: :post, remote: true do %>
+                            ♡<%= @content.favorites.count %> いいね
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="col-md-6">
+                    Bookmark
+                </div>
+            </div>
+            
+            <div class="comment-area mt-3">
+                コメントの件数:
+                <span class="comment-count">
+                    <%= @content.comments.count %>
+                </span>
+                <hr class="hr">
+                <% @content.comments.each do |comment| %>
+                    <div>
+                        <h6 class="d-inline-block"><%= comment.user.name %></h6>
+                        <small><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+                    </div>
+                    <%= simple_format(comment.comment) %>
+                <% end %>
+                <hr class="hr">
+                <%= form_with model: [@content, @comment] do |f| %>
+                    <div class="form-group">
+                        <%= f.text_area :comment, class: 'form-control', rows: '3', placeholder: "コメントをここに" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.submit "送信する", class: 'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
- </div>
-
-<div class="row">
- <div class='col-md-10'>
-<p>投稿者<%= @content.user.name %></p>
-<p><%= @content.user_comment %></p>
-
-    <td> <% if @content.favorited_by?(current_user) %>
-      
-       <%= link_to content_favorites_path(@content), method: :delete, remote: true do %>
-       ♥<%= @content.favorites.count %> いいね
-       <% end %>
-       </td>
-      <% else %>
-      
-       <%= link_to content_favorites_path(@content), method: :post, remote: true do %>
-       ♡<%= @content.favorites.count %> いいね
-       <% end %>
-       <% end %>
-    </div>
 </div>
-
-<div>
-  <p>コメント件数：<%= @content.comments.count %></p>
-  <% @content.comments.each do |comment| %>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@content, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
-  </div>
- </div>

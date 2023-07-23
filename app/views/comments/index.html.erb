@@ -2,35 +2,41 @@
   <div class='row'>
     <div class='col-md-12'>
         
-     <div class='card' style="d-block mb-5">
-      <div style="display: flex">
-          <%= link_to '一覧',contents_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
-          <%= link_to 'コメント',content_comments_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
-          <%= link_to '新着順',contents_arrivalorder_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
-          <%= link_to '投稿',contents_path, class: "btn btn-info btn-sm btn-sm mb-3 sign_in" %>
+     <div class='text-center'>
+      <div class="btn-group mb-5" role="group" aria-label="Basic example">
+          <%= link_to '一覧',contents_path, class: "btn #{controller_name == 'contents' && action_name == 'index' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to 'コメント',comments_path, class: "btn #{controller_name == 'comments' && action_name == 'index' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to '新着順',contents_arrivalorder_path, class: "btn #{controller_name == 'contents' && action_name == 'arrivalorder' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to '投稿',new_content_path, class: "btn #{controller_name == 'contents' && action_name == 'new' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
       </div>
      </div>
 
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+    <h2 class="text-white">新規投稿</h2>
+  </div>
+<!--<table class='table table-hover table-inverse text-white'>-->
+  <!--<tbody>-->
+  <div>
     <% @comments.each do |comment| %>
-      <tr>
-        </td>
-        <td><%= comment.user.name %></td>
-        <td><%= comment.text %></td>
-      
-      </tr>
+    
+      <div class="border p-3">
+        <h6>
+          <%= comment.user.name %>
+        </h6>
+        <%= simple_format(comment.comment.truncate(100), class: 'm-0') %>
+        <div>
+          <small>
+            <%= comment.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
+          </small>
+        </div>
+        <h5>
+          <%= link_to comment.content.title, content_path(comment.content_id) %>
+        </h5>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <!--</tbody>-->
+<!--</table>-->
     </div>
   </div>
 </div>

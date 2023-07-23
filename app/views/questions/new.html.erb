@@ -1,12 +1,23 @@
-<h1>新規投稿</h1>
-<!-- form_with部分 -->
-<%= form_with model: @question do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-	
-  <h4>本文</h4>
-  <%= f.text_area :text %>
-	
-  
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="container">
+  <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+    <h2>新規質問</h2>
+  </div>
+  <!-- form_with部分 -->
+  <%= form_with model: @question do |f| %>
+    <div class="form-group">
+      <%= f.label :title, 'タイトル' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :text, '本文' %>
+      <%= f.text_area :text, class: 'form-control js-text', rows: 15 %>
+      <div class="text-right"><span class="js-text-count"></span></div>
+	  </div>
+    <div class="form-group">
+    <div class="row">
+      <div class="col-12 col-md-4 mx-auto">
+        <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  <% end %>
+</div>

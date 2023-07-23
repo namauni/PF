@@ -5,7 +5,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-       <a class="navbar-brand" href="/"><span>about</span></a>
+       <a class="navbar-brand" href="/home/about"><span>about</span></a>
        
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
@@ -21,7 +21,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
+            <%= link_to questions_path, class: 'nav-link text-light' do %>
               <i class="fas fa-users"></i> 質問掲示板
             <% end %>
           </li>
@@ -38,7 +38,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
+            <%= link_to questions_path,class: 'nav-link text-light' do %>
               <i class="fas fa-link"></i> 質問掲示板
             <% end %>
           </li>

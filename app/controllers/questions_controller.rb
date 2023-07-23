@@ -22,11 +22,11 @@ class QuestionsController < ApplicationController
   end
   
   def create
-    @question = Question.new(Question_params)
+    @question = Question.new(question_params)
     @question.user_id = current_user.id
     if@question.save
       flash[:notice] = "You have created Question successfully."
-      redirect_to Question_path(@question.id)
+      redirect_to question_path(@question.id)
     else
       @questions = Question.all
       @user = current_user
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   
   private
   # ストロングパラメータ
-  def Question_params
-    params.require(:Question).permit(:title, :text)
+  def question_params
+    params.require(:question).permit(:title, :text)
   end
 end

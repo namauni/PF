@@ -1,4 +1,3 @@
-<p><%= flash[:notice] %></p>
 <div class="d-flex justify-content-center">
 <div class="container">
   <div class="row">
@@ -15,14 +14,16 @@
 
 
       
-    <h2>User info</h2>
+  <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+    <h2 class="text-white">プロフィール編集</h2>
+  </div>
     <%= form_with model: @user do |f| %>
       <div class="form-group">
-        <p for="inputName">Name</p>
+        <p for="inputName">名前</p>
         <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
       </div>
       <div class="form-group">
-        <p for="inputIntroduction">Introduction</p>
+        <p for="inputIntroduction">プロフィール</p>
         <%= f.text_field :introduction, autofocus: true, id:"inputintroduction"%>
       </div>
       <div class="form-group">
