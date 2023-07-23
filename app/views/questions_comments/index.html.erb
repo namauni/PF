@@ -1,0 +1,42 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12'>
+        
+     <div class='text-center'>
+      <div class="btn-group mb-5" role="group" aria-label="Basic example">
+          <%= link_to '一覧',questions_path, class: "btn #{controller_name == 'questions' && action_name == 'index' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to 'コメント',questions_comments_path, class: "btn #{controller_name == 'questions_comments' && action_name == 'index' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to '新着順',questions_arrivalorder_path, class: "btn #{controller_name == 'questions' && action_name == 'arrivalorder' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+          <%= link_to '投稿',new_question_path, class: "btn #{controller_name == 'questions' && action_name == 'new' ? 'btn-info' : 'btn-outline-info'} btn-lg" %>
+      </div>
+     </div>
+
+  <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+    <h2 class="text-white">新規投稿</h2>
+  </div>
+<!--<table class='table table-hover table-inverse text-white'>-->
+  <!--<tbody>-->
+  <div>
+    <% @questions_comments.each do |questions_comment| %>
+    
+      <div class="border p-3" style="background-color: #4a4a4a">
+        <h6>
+          <%= questions_comment.user.name %>
+        </h6>
+        <%= simple_format(questions_comment.comment.truncate(100), class: 'm-0') %>
+        <div>
+          <small>
+            <%= questions_comment.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
+          </small>
+        </div>
+        <h5>
+          <%= link_to questions_comment.question.title, question_path(questions_comment.question_id) %>
+        </h5>
+      </div>
+    <% end %>
+  </div>
+  <!--</tbody>-->
+<!--</table>-->
+    </div>
+  </div>
+</div>

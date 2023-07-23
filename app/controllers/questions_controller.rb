@@ -7,9 +7,13 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def arrivalorder
+    @questions = Question.all.order(created_at: :desc)
+  end
+  
   def show
      @question = Question.find(params[:id]) 
-     @comment = Comment.new
+     @comment = Questions_comment.new
   end
   
   def edit
@@ -17,8 +21,8 @@ class QuestionsController < ApplicationController
   end
   def update
     @question = Question.find(params[:id])
-    Question.update(Question_params)
-    redirect_to Question_path(Question.id)  
+    Question.update(question_params)
+    redirect_to question_path(question.id)  
   end
   
   def create
@@ -37,12 +41,12 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id]) 
     @question.destroy
-    redirect_to Questions_path
+    redirect_to questions_path
   end
   
   private
   # ストロングパラメータ
   def question_params
-    params.require(:question).permit(:title, :text)
+    params.require(:question).permit(:title, :text, :answered)
   end
 end

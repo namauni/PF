@@ -16,8 +16,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   
+  get 'questions/arrivalorder'
+  get 'questions_comments', to: 'questions_comments#index'
   resources :questions, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
-    resources :questions_comments, only: [:create, :destroy, :index]
+    resources :questions_comments, only: [:create, :destroy]
   end
   get 'users/contents_index'
   get 'users/questions_index'

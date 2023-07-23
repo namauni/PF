@@ -1,16 +1,25 @@
-<%= flash[:notice] %>
+<div class="container">
+  <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+    <h2 class="text-white">質問編集</h2>
+  </div>
+  <!-- form_with部分 -->
+  <%= form_with model: @question do |f| %>
+    <div class="form-group">
+      <%= f.label :title, 'タイトル' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+	<div class="form-group">
+      <%= f.label :text, '本文' %>
+      <%= f.text_area :text, class: 'form-control js-text', rows: 15 %>
+      <div class="text-right"><span class="js-text-count"></span></div>
+	</div>
 
-<h1>編集画面</h1>
-
-<%= form_with model: @question do |f| %>
-
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  
-  <h4>本文</h4>
-  <%= f.text_area :text %>
-  
-  
-  <%= f.submit '保存' %>
-  
-<% end %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-12 col-md-4 mx-auto">
+          <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
