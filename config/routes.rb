@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
   
   get 'questions/new'
-  get 'questions/index'
-  get 'questions/show'
-  get 'questions/edit'
+
 devise_for :users
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
 root to: 'homes#top'
 get '/home/about' => 'homes#about',as: "about"
+
+get 'contents/arrivalorder'
 resources :contents, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
   resource :favorites, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy, :index]
 end
 
 resources :questions, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
-  resources :questions_comments, only: [:create, :destroy]
+  resources :questions_comments, only: [:create, :destroy, :index]
 end
+  get 'users/contents_index'
+  get 'users/questions_index'
 resources :users, only: [:show, :edit,:update]do
   resource :relationships, only:[:create, :destroy]
 

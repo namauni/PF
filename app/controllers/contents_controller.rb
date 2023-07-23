@@ -7,6 +7,10 @@ class ContentsController < ApplicationController
   def index
     @contents = Content.all
   end
+  
+  def arrivalorder
+    @contents = Content.all(created_at: :desc)
+  end
 
   def show
      @content = Content.find(params[:id]) 
@@ -19,8 +23,8 @@ class ContentsController < ApplicationController
 
   def update
     @content = Content.find(params[:id])
-    content.update(content_params)
-    redirect_to content_path(content.id)  
+    @content.update(content_params)
+    redirect_to content_path(@content.id)  
   end
   
   def create

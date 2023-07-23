@@ -1,20 +1,26 @@
-<%= flash[:notice] %>
+ <div class="container">
+  <div class="row">
+    <div class='col-md-10'>
+     <div>
+      <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+      <p class="text-white"><%= @content.title %></p>
+      </div>
 
-<div>
-<h2>タイトル</h2>
-<p><%= @content.title %></p>
-
-<h2>本文</h2>
-<p><%= @content.text %></p>
+      <div class="d-flex justify-content-center bg:#505D6B" style="background-color: #202425">
+      <p class="text-white"><%= @content.text %></p>
+      </div>
 
 <% if @content.user == current_user %>
-<%= link_to "編集", edit_content_path(@content.id) %>
-<%= link_to "削除", content_path(@content.id), method: :delete, data: { confirm: '本当に消しますか？' } %>
+<%= link_to "編集", edit_content_path(@content.id), class: "btn btn-sm btn-success" %>
+<%= link_to "削除", content_path(@content.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
 <% end %>
-</div>
+     </div>
+    </div>
+ </div>
 
-<h2>投稿者</h2>
-<p><%= @content.user.name %></p>
+<div class="row">
+ <div class='col-md-10'>
+<p>投稿者<%= @content.user.name %></p>
 <p><%= @content.user_comment %></p>
 
     <td> <% if @content.favorited_by?(current_user) %>
@@ -29,6 +35,8 @@
        ♡<%= @content.favorites.count %> いいね
        <% end %>
        <% end %>
+    </div>
+</div>
 
 <div>
   <p>コメント件数：<%= @content.comments.count %></p>
@@ -43,3 +51,5 @@
     <%= f.submit "送信する" %>
   <% end %>
 </div>
+  </div>
+ </div>

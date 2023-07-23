@@ -1,7 +1,10 @@
-<%= flash[:notice] %>
 
-<h1>編集画面</h1>
-
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<div class="d-flex justify-content-center bg:#505D6B" style="background-color: #505d6b">
+            <h2 class="text-white">内容編集</h2>
+</div>
 <%= form_with model: @content do |f| %>
 
   <h4>タイトル</h4>
@@ -16,3 +19,6 @@
   <%= f.submit '保存' %>
   
 <% end %>
+   </div>
+  </div>
+ </div>

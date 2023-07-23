@@ -1,16 +1,20 @@
 class CommentsController < ApplicationController
 before_action :is_matching_login_user, only: [:destroy]
 def create
-    comment = current_user.comments.new(comment_params)
-    comment.save
-    redirect_to top
+    @comment = current_user.comments.new(comment_params)
+    @comment.save
+    redirect_to content_path(@comment.content_id)
 end
 
 def destroy
     Comment.find(params[:id]).destroy
-    redirect_to top
+    redirect_to content_path(comment.id)
 end
 
+def index
+    @comments = Content.all(created_at: :desc)
+end
+  
   private
 
   def comment_params
