@@ -3,7 +3,7 @@
         <div class="col-md-10 mx-auto">
             <h4 class="p-2 text-center" style="background-color: #505d6b"><%= @content.title %></h4>
             
-            <div class="content">
+            <div class="content" style="background-color: #2f3436">
                 <%= simple_format(@content.text) %>
             </div>
             
@@ -12,7 +12,7 @@
                 <%= link_to "削除", content_path(@content.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
             <% end %>
             
-            <div class="row my-3">
+            <div class="row my-3" style="background-color: #505d6b">
                 <div class="col-md-6">
                     <h5>投稿者: <%= link_to @content.user.name, user_path(@content.user) %></h5>
                 </div>
@@ -21,11 +21,11 @@
                 </div>
             </div>
             
-            <div class="author-comment">
+            <div class="author-comment" style="background-color: #4a4a4a">
                 <%= simple_format(@content.user_comment) %>
             </div>
             
-            <div class="row">
+            <div class="row" style="background-color: #505d6b">
                 <div class="col-md-6">
                     <% if @content.favorited_by?(current_user) %>
                         <%= link_to content_favorites_path(@content), method: :delete, remote: true do %>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             
-            <div class="comment-area mt-3">
+            <div class="comment-area mt-3" style="background-color: #4a4a4a">
                 コメントの件数:
                 <span class="comment-count">
                     <%= @content.comments.count %>

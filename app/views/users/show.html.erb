@@ -18,13 +18,13 @@
      <div class="row">
          <div class="col-md-3">怪談</div>
          <div class="col-md-7" style= "background-color: #4a4a4a"><%= @user.contents.count %></div>
-         <div class="col-md-2"><%= link_to '一覧',contents_path, class: "btn btn-info btn-block" %></div>
+         <div class="col-md-2"><%= link_to '一覧',users_contents_index_path, class: "btn btn-info btn-block" %></div>
      </div>
      
      <div class="row mt-3">
          <div class="col-md-3">質問</div>
          <div class="col-md-7" style= "background-color: #4a4a4a"><%= @user.questions.count %></div>
-         <div class="col-md-2"><%= link_to '一覧',questions_path, class: "btn btn-info btn-block" %></div>
+         <div class="col-md-2"><%= link_to '一覧',users_questions_index_path, class: "btn btn-info btn-block" %></div>
      </div>
   </div>
     </div>
