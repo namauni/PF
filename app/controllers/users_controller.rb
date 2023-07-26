@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def contents_index
+  def content_index
     @user = User.find(params[:id])
     @contents = @user.contents
   end

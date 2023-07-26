@@ -6,6 +6,10 @@ def create
     redirect_to top
 end
 
+def index
+  @questions_comments = QuestionsComment.all.order(created_at: :desc)
+end  
+
 def destroy
     Questions_comment.find(params[:id]).destroy
     redirect_to top

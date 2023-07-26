@@ -15,14 +15,14 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  
+  get "users/:id/content_index" => "users#content_index",as: "content_index"
+  get 'users/:id/questions_index' =>"users#questions_index",as: "questions_index"
   get 'questions/arrivalorder'
   get 'questions_comments', to: 'questions_comments#index'
   resources :questions, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resources :questions_comments, only: [:create, :destroy]
   end
-  get 'users/contents_index'
-  get 'users/questions_index'
+
   resources :users, only: [:show, :edit,:update] do
     resource :relationships, only:[:create, :destroy]
   
