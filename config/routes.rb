@@ -25,6 +25,7 @@ devise_for :admins, controllers: {
   get 'comments', to: 'comments#index'
   resources :contents, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resource :favorites, only: [:create, :destroy]
+    resource :bookmark, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
   get "users/:id/content_index" => "users#content_index",as: "content_index"
