@@ -1,2 +1,58 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h4 class="p-2 text-center" style="background-color: #505d6b"><%= @question.title %></h4>
+            
+            <div class="content" style="background-color: #2f3436">
+                <%= simple_format(@question.text) %>
+            </div>
+            
+            <% if @question.user == current_user %>
+                <%= link_to "編集", edit_question_path(@question.id), class: "btn btn-sm btn-success" %>
+                <%= link_to "削除", question_path(@question.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            <% end %>
+            
+            <div class="row my-3" style="background-color: #505d6b">
+                <div class="col-md-6">
+                    <h5>投稿者: <%= link_to @question.user.name, user_path(@question.user) %></h5>
+                </div>
+                <div class="col-md-6">
+                   <% if display_follow_bottun?(current_user,@question.user) %>
+                    <% if current_user.following?(@question.user) %>
+                     <%= link_to 'フォロー外す', user_relationships_path(@question.user.id), method: :delete, class: "btn btn-default" %>
+                    <% else %>
+                      <%= link_to 'フォローする', user_relationships_path(@question.user.id), method: :POST , class: "btn btn-primary"%>
+                      <% end %>
+                   <% end %>
+                </div>
+            </div>
+            
+            
+
+            
+            <div class="comment-area mt-3" style="background-color: #4a4a4a">
+                コメントの件数:
+                <span class="comment-count">
+                    <%= @question.questions_comments.count %>
+                </span>
+                <hr class="hr">
+                <% @question.questions_comments.each do |questions_comment| %>
+                    <div>
+                        <h6 class="d-inline-block"><%= questions_comment.user.name %></h6>
+                        <small><%= questions_comment.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+                    </div>
+                    <%= simple_format(questions_comment.comment) %>
+                <% end %>
+                <hr class="hr">
+                <%= form_with model: [@question, @comment] do |f| %>
+                    <div class="form-group">
+                        <%= f.text_area :comment, class: 'form-control', rows: '3', placeholder: "コメントをここに" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.submit "送信する", class: 'btn btn-primary' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

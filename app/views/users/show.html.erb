@@ -29,7 +29,7 @@
   </div>
     </div>
     
-  <% unless @user.guest_user? %>
+    <% if display_follow_bottun?(current_user,@user) %>
    <% if @user == current_user %>
    <div class='margin-bottom: 2px;'>
     <%= link_to '新規投稿', new_content_path(@user), class: "btn btn-sm btn-success d-block shadow mb-2"%>

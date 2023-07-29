@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   
   def show
      @question = Question.find(params[:id]) 
-     @comment = Questions_comment.new
+     @comment = QuestionsComment.new
   end
   
   def edit

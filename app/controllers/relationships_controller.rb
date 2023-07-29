@@ -11,13 +11,13 @@ end
 
 def follower #follower一覧
     user = User.find(params[:user_id])
-    @users = user.follower_user
+    @users = user.followers
     # .follower_userメソッド ：Userモデルで定義済
 end
 
 def followed #followed一覧
     user = User.find(params[:user_id])
-    @users = user.following_user
+    @users = user.followings
     # .follower_userメソッド ：Userモデルで定義済
 end
 end
