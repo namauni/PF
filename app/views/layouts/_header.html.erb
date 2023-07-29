@@ -31,6 +31,28 @@
             <% end %>
           </li>
           
+          <% elsif admin_signed_in?%>
+          <li>
+            <%=  link_to contents_path ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> 怪談
+            <% end %>
+          </li>
+          <li>
+            <%= link_to questions_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-link"></i> 質問掲示板
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> signup
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> log out
+            <% end %>
+          </li>
+          
         <% else %>
           <li>
             <%=  link_to contents_path ,class: 'nav-link text-light' do %>

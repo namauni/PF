@@ -3,7 +3,16 @@ Rails.application.routes.draw do
 devise_for :admins, controllers: {
   sessions: "admin/sessions"
 }
-  get 'questions/new'
+  namespace :admin do
+    root to: "homes#top"
+    #resources :sessions, only: [:new, :create, :destroy]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :order_items, only: [:update]
+    resources :orders, only: [:index, :show, :update,]
+    get 'orders' => 'orders#order_history', as: 'order_history'
+  end
 
   devise_for :users
     devise_scope :user do

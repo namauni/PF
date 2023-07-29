@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+
+   <table class="table text-white">
+     <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+           <td><%= question.title %></td>
+           <td><%= simple_format(question.text.truncate(100), class: 'm-0') %></td>
+           <td><%= question.user.name %></td>
+           <td><%= question.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= link_to "削除", question_path(@question.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

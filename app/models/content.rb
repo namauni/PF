@@ -3,7 +3,7 @@ class Content < ApplicationRecord
 validates :title, presence: true
 validates :text, presence: true
 belongs_to :user
-has_many :comments
+has_many :comments, dependent: :destroy
 has_many :tags, through: :content_qeestion_tags
 has_many :favorites, dependent: :destroy
 
