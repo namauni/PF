@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    
+before_action :authenticate_user!
 before_action :is_matching_login_user, only: [:destroy]
 def create
     @comment = current_user.comments.new(comment_params)

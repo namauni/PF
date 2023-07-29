@@ -6,10 +6,11 @@
      <tbody>
       <% @users.each do |user| %>
         <tr>
+           <td><%= user.id %></td>
            <td><%= user.name %></td>
            <td>フォロー数：<%= user.followings.count %></td>
            <td>フォロワー数：<%= user.followers.count %></td>
-          <td><%= link_to "削除", question_path(@question.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+          <td><%= link_to "削除", user_path(user.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>

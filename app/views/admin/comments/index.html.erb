@@ -9,10 +9,9 @@
            <td><%= comment.user.name %></td>
            <td><%= simple_format(comment.comment.truncate(100), class: 'm-0') %></td>
            <td><%= comment.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></td>
-           <td><%= link_to comment.content.title, content_path(comment.content_id) %></td>
-          <td><%= link_to "削除", question_path(@question.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+           <td><%= comment.content.title %></td>
+          <td><%= link_to "削除", admin_comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-<% end %>

@@ -1,5 +1,7 @@
 class ContentsController < ApplicationController
   
+  before_action :authenticate_user!
+  
   def new
     @content = Content.new
   end

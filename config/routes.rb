@@ -6,18 +6,18 @@ devise_for :admins, controllers: {
   namespace :admin do
     root to: "homes#top"
     #resources :sessions, only: [:new, :create, :destroy]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :order_items, only: [:update]
-    resources :orders, only: [:index, :show, :update,]
-    get 'orders' => 'orders#order_history', as: 'order_history'
+    resources :contents, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy]
+    resources :questions, only: [:index, :destroy]
+    resources :questions_comments, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy]
   end
 
   devise_for :users
     devise_scope :user do
       post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
     end
+    
   root to: 'homes#top'
   get '/home/about' => 'homes#about',as: "about"
   

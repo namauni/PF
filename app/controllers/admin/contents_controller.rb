@@ -6,6 +6,6 @@ class Admin::ContentsController < ApplicationController
   def destroy
     @content = Content.find(params[:id]) 
     @content.destroy
-    redirect_to contents_path
+    redirect_to admin_contents_path
   end
 end

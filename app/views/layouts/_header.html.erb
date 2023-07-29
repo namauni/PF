@@ -33,18 +33,29 @@
           
           <% elsif admin_signed_in?%>
           <li>
-            <%=  link_to contents_path ,class: 'nav-link text-light' do %>
+            <%= link_to admin_users_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> ユーザー
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_contents_path,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> 怪談
             <% end %>
           </li>
           <li>
-            <%= link_to questions_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> 質問掲示板
+            <%= link_to admin_comments_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> コメント
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> signup
+            <%= link_to admin_questions_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-link"></i> 質問掲示板
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to admin_questions_comments_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-plus"></i> 質問コメント
             <% end %>
           </li>
           <li>
