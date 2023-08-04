@@ -1,15 +1,23 @@
 class BookmarkController < ApplicationController
-  def create
-    content = Content.find(params[:content_id])
-    bookmark = current_user.bookmarks.new(content_id: content.id)
-    bookmark.save
-    redirect_to request.referer
-  end
+ def create
+    @bookmark = current_end_user.bookmarks.build(bookmark_params)
+    @post = @bookmark.post
+    if @bookmark.valid?
+      @bookmark.save
+      redirect_to post_path(@post), notice: "お気に入りに登録しました。"
+    end
+ end
 
   def destroy
-    content = Content.find(params[:content_id])
-    bookmark = current_user.bookmarks.find_by(content_id: content.id)
-    bookmark.destroy
-    redirect_to request.referer
+    @bookmark = Bookmark.find(params[:id])
+    @post = @bookmark.post
+    if @bookmark.destroy
+      redirect_to post_path(@post), notice: "お気に入り登録を解除しました。"
+    end
+  end
+
+  private
+  def bookmark_params
+    params.permit(:post_id)
   end
 end
