@@ -1,0 +1,2 @@
+<%#= 対象となるdiv要素のIDのhtmlを部分テンプレートに置き換える %>
+$('#bookmark_button_<%= @content.id %>').html("<%= j(render partial: 'bookmarks/button', locals: {content: @content}) %>");

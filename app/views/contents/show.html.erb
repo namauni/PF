@@ -43,16 +43,8 @@
                         <% end %>
                     <% end %>
                 </div>
-                <div class="col-md-6">
-                    <% if @content.bookmarked_by?(current_user) %>
-                        <%= link_to content_bookmark_path(@content), method: :delete, remote: true do %>
-                            ♥<%= @content.bookmarks.count %> お気に入り
-                        <% end %>
-                    <% else %>
-                        <%= link_to content_bookmark_path(@content), method: :post, remote: true do %>
-                            ♡<%= @content.bookmarks.count %> お気に入り
-                        <% end %>
-                    <% end %>
+                <div id="bookmark_button_<%= @content.id %>" class="col-md-6">
+                    <%= render partial: 'bookmarks/button', locals: {content: @content} %>
                 </div>
             </div>
             
