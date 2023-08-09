@@ -31,6 +31,7 @@ class ContentsController < ApplicationController
   
   def create
     @content = Content.new(content_params)
+    @content.score = Language.get_data(content_params[:text])  #この行を
     @content.user_id = current_user.id
     if@content.save
       flash[:notice] = "You have created content successfully."

@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
   
   def create
     @question = Question.new(question_params)
+    @question.score = Language.get_data(question_params[:text])  #この行を
     @question.user_id = current_user.id
     if@question.save
       flash[:notice] = "You have created Question successfully."

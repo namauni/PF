@@ -6,6 +6,7 @@
             <div class="content" style="background-color: #2f3436">
                 <%= simple_format(@question.text) %>
             </div>
+            <%= @question.score %>
             
             <% if @question.user == current_user %>
                 <%= link_to "編集", edit_question_path(@question.id), class: "btn btn-sm btn-success" %>
