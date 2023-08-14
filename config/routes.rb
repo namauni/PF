@@ -28,6 +28,7 @@ devise_for :admins, controllers: {
     resource :bookmarks, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
+  get 'users/:id/bookmarks_index' =>"users#bookmarks_index",as: "bookmarks_index"
   get "users/:id/content_index" => "users#content_index",as: "content_index"
   get 'users/:id/questions_index' =>"users#questions_index",as: "questions_index"
   get 'questions/arrivalorder'

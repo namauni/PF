@@ -29,14 +29,13 @@
   </div>
     </div>
     
-    <% if display_follow_bottun?(current_user,@user) %>
-   <% if @user == current_user %>
+  <% if display_follow_bottun?(current_user,@user) %>
    <div class='margin-bottom: 2px;'>
+    <%= link_to 'お気に入り', bookmarks_index_path(@user), class: "btn btn-sm btn-success d-block shadow mb-2"%>
     <%= link_to '新規投稿', new_content_path(@user), class: "btn btn-sm btn-success d-block shadow mb-2"%>
     <%= link_to '新規質問', new_question_path(@user), class: "btn btn-sm btn-success d-block shadow mb-2" %>
     <%= link_to 'プロフィール編集', edit_user_path(@user), class: "btn btn-sm btn-success d-block shadow mb-2" %>
    </div>
-<% end %>
   <% end %>
 
  </div>

@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def bookmarks_index
+    @user = User.find(params[:id])
+    @contents = @user.bookmark_contents
+  end
+  
   def content_index
     @user = User.find(params[:id])
     @contents = @user.contents
