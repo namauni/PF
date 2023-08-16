@@ -20,7 +20,7 @@ devise_for :admins, controllers: {
     
   root to: 'homes#top'
   get '/home/about' => 'homes#about',as: "about"
-  
+  get "search" => "searches#search"
   get 'contents/arrivalorder'
   get 'comments', to: 'comments#index'
   resources :contents, only: [:new, :create, :index, :show, :destroy, :edit, :update] do

@@ -16,4 +16,7 @@ def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
 end
 
+ def self.looks(search, word)
+ @content = Content.where("title LIKE? or text LIKE?","%#{word}%","%#{word}%")
+ end
 end

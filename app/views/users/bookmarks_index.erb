@@ -5,7 +5,7 @@
     <% if @contents.count > 0 %>  
     <div class="row">
     <% @contents.each do |content| %>
-        <div class='col-md-6'>
+        <div class='col-md-6 mb-2'>
         <%#= link_to content %>
             <div class="border p-3" style="background-color: #505d6b">
                 <h5><%= link_to content.title, content_path(content) %></h5>
