@@ -8,6 +8,7 @@ class ContentsController < ApplicationController
 
   def index
     @contents = Content.all
+    @tag_list=Tag.all
   end
   
   def arrivalorder
@@ -17,6 +18,7 @@ class ContentsController < ApplicationController
   def show
      @content = Content.find(params[:id]) 
      @comment = Comment.new
+     @content_tags = @content.tags
   end
 
   def edit
@@ -26,6 +28,8 @@ class ContentsController < ApplicationController
   def update
     @content = Content.find(params[:id])
     @content.update(content_params)
+    tag_list=params[:content][:tag].split(',')
+    @content.save_tag(tag_list)
     redirect_to content_path(@content.id)  
   end
   
@@ -33,7 +37,9 @@ class ContentsController < ApplicationController
     @content = Content.new(content_params)
     @content.score = Language.get_data(content_params[:text])  #この行を
     @content.user_id = current_user.id
+    tag_list=params[:content][:tag].split(',')
     if@content.save
+      @content.save_tag(tag_list)
       flash[:notice] = "You have created content successfully."
       redirect_to content_path(@content.id)
     else

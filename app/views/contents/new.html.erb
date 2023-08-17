@@ -14,6 +14,10 @@
       <div class="text-right"><span class="js-text-count"></span></div>
 	</div>
 	<div class="form-group">
+      <%= f.label :tag, 'タグ' %>
+      <%= f.text_field :tag, class: 'form-control js-text', rows: 15 %>
+	</div>
+	<div class="form-group">
 	  <%= f.label :user_comment, '投稿者コメント' %>
       <%= f.text_area :user_comment, class: 'form-control', rows: 2 %>
     </div>

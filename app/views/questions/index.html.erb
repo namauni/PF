@@ -18,6 +18,7 @@
     <%= form_with url: search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
       <%= f.hidden_field :range, value: 'Question' %>
+      <%= f.select :search, options_for_select([["タイトル・本文","partial_match"], ["タグ","tag_match"]]) %>
       <%= f.submit "検索", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -32,6 +33,7 @@
             <div class="border p-3" style="background-color: #505d6b">
                 <h5><%= link_to question.title, question_path(question) %></h5>
                 <%= simple_format(question.text.truncate(100), class: 'm-0') %>
+                <i class="fas fa-tag"><%= question.tags.map(&:tag).join(', ') %></i>
                 <div>
                     <h4 class="d-inline-block">
                         <%= question.user.name %>

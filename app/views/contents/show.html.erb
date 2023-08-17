@@ -14,6 +14,9 @@
             <% end %>
             
             <div class="row my-3" style="background-color: #505d6b">
+                <i class="fas fa-tag"><%= @content_tags.map(&:tag).join(', ') %></i>
+            </div>
+            <div class="row my-3" style="background-color: #505d6b">
                 <div class="col-md-6">
                     <h5>投稿者: <%= link_to @content.user.name, user_path(@content.user) %></h5>
                 </div>

@@ -9,6 +9,7 @@
             <div class="border p-3" style="background-color: #505d6b">
                 <h5><%= link_to content.title, content_path(content) %></h5>
                 <%= simple_format(content.text.truncate(100), class: 'm-0') %>
+                <i class="fas fa-tag"><%= content.tags.map(&:tag).join(', ') %></i>
                 <div>
                     <h4 class="d-inline-block">
                         <%= content.user.name %>

@@ -18,6 +18,7 @@
             <div class="border p-3" style="background-color: #505d6b">
                 <h5><%= link_to question.title, question_path(question) %></h5>
                 <%= simple_format(question.text.truncate(100), class: 'm-0') %>
+                <i class="fas fa-tag"><%= question.tags.map(&:tag).join(', ') %></i>
                 <div>
                     <h4 class="d-inline-block">
                         <%= question.user.name %>
