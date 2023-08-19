@@ -23,7 +23,7 @@
 ## 設計書
 - [機能一覧](https://docs.google.com/spreadsheets/d/1bf-Du38NAoCDR-x_YFfxgZ_sqYziuR-1UfpgLvPjTZE/edit?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZLhefhGdpIp6D3AKbPPYkiLbhfOzk_BCJT19KDP5XLk/edit?usp=sharing)
-- ![ER図](https://drive.google.com/file/d/1jrmuA4m-TZlqWcTMx56NAFlfrVTycqfw/view?usp=sharing)
+- ![ER図](https://i.gyazo.com/779a20a462a8dd6f785decd58803d4ae.jpg)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
