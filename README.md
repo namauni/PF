@@ -21,9 +21,9 @@
 - ネットで見たこと・聞いたことがあるけど、どんな話だったか確認したいとき
 ​
 ## 設計書
-[機能一覧](https://docs.google.com/spreadsheets/d/1bf-Du38NAoCDR-x_YFfxgZ_sqYziuR-1UfpgLvPjTZE/edit?usp=sharing)
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1ZLhefhGdpIp6D3AKbPPYkiLbhfOzk_BCJT19KDP5XLk/edit?usp=sharing)
-![ER図](https://drive.google.com/file/d/1yOtQsWYeBQqIanqQzBxEq_GjeaXmM2aH/view?usp=sharing)
+- [機能一覧](https://docs.google.com/spreadsheets/d/1bf-Du38NAoCDR-x_YFfxgZ_sqYziuR-1UfpgLvPjTZE/edit?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZLhefhGdpIp6D3AKbPPYkiLbhfOzk_BCJT19KDP5XLk/edit?usp=sharing)
+- ![ER図](https://drive.google.com/file/d/1jrmuA4m-TZlqWcTMx56NAFlfrVTycqfw/view?usp=sharing)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
