@@ -27,10 +27,13 @@ class ContentsController < ApplicationController
 
   def update
     @content = Content.find(params[:id])
-    @content.update(content_params)
-    tag_list=params[:content][:tag].split(',')
-    @content.save_tag(tag_list)
-    redirect_to content_path(@content.id)  
+    if@content.update(content_params)
+      tag_list=params[:content][:tag].split(',')
+      @content.save_tag(tag_list)
+      redirect_to content_path(@content.id)
+    else
+      render "edit"
+    end
   end
   
   def create

@@ -24,11 +24,14 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id]) 
   end
   def update
-    @question = Question.find(params[:id])
-    Question.update(question_params)
-    tag_list=params[:question][:tag].split(',')
-    @question.save_tag(tag_list)
-    redirect_to question_path(@question.id)  
+    if@question = Question.find(params[:id])
+      Question.update(question_params)
+      tag_list=params[:question][:tag].split(',')
+      @question.save_tag(tag_list)
+      redirect_to question_path(@question.id)
+    else
+      render "edit"
+    end
   end
   
   def create
