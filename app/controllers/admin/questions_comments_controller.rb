@@ -1,4 +1,5 @@
 class Admin::QuestionsCommentsController < ApplicationController
+  before_action :authenticate_admin!
 def index
   @questions_comments = QuestionsComment.all.order(created_at: :desc)
 end  
