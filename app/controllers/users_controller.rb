@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     @questions = @user.questions
   end
   
+  def timeline
+    @user = User.find(params[:id])
+    @contents = Content.where(user_id: [*current_user.following_ids])
+  end
+  
   def edit
     @user = User.find(params[:id])
     if @user == current_user
