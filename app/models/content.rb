@@ -7,6 +7,7 @@ has_many :comments, dependent: :destroy
 has_many :content_tags, dependent: :destroy
 has_many :tags, through: :content_tags
 has_many :favorites, dependent: :destroy
+has_many :favorited_users, through: :favorites, source: :user
 has_many :bookmarks, dependent: :destroy
 
 def favorited_by?(user)
