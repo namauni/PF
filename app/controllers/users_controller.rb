@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   
   def timeline
     @user = User.find(params[:id])
-    @contents = Content.where(user_id: [*current_user.following_ids])
+    @contents = Content.order("created_at DESC").where(user_id: [*current_user.following_ids])
   end
   
   def edit
