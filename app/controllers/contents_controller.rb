@@ -12,7 +12,7 @@ class ContentsController < ApplicationController
   end
   
   def arrivalorder
-    @contents = Content.all.order(created_at: :desc)
+    @contents = Content.page(params[:page]).order(created_at: :desc)
   end
 
   def show
