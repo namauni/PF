@@ -6,12 +6,12 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.page(params[:page])
     @tag_list=Tag.all
   end
 
   def arrivalorder
-    @questions = Question.all.order(created_at: :desc)
+    @questions = Question.page(params[:page]).order(created_at: :desc)
   end
   
   def show

@@ -15,7 +15,7 @@ def destroy
 end
 
 def index
-  @questions_comments = QuestionsComment.all.order(created_at: :desc)
+  @questions_comments = QuestionsComment.page(params[:page]).order(created_at: :desc)
 end  
 
   private
